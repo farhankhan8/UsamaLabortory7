@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header">
-    Create New Test
+    Create New Patient
         <!-- {{ trans('global.create') }} {{ trans('cruds.room.title_singular') }} -->
     </div>
 
@@ -135,7 +135,7 @@
       </div>
     </div>
   </div>
-  <button class="btn btn-primary" type="submit">Submit form</button>
+  <button class="btn btn-primary" type="submit">Submit</button>
 </form>
 
 

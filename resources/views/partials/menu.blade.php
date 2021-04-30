@@ -110,7 +110,7 @@
                         <i class="fa-fw fas fa-users nav-icon">
 
                         </i>
-                        Catagory
+                        Category 
                     </a>
                     <ul class="nav-dropdown-items">
                         @can('permission_access')
@@ -119,7 +119,7 @@
                                     <i class="fa-fw fas fa-unlock-alt nav-icon">
 
                                     </i>
-                                    Catagory List
+                                    Category  List
                                 </a>
                             </li>
                         @endcan

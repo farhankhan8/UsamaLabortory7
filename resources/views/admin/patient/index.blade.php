@@ -52,46 +52,46 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($events as $key => $event)
-                        <tr data-entry-id="{{ $event->id }}">
+                    @foreach($patients as $key => $patient)
+                        <tr data-entry-id="{{ $patient->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $event->id ?? '' }}
+                                {{ $patient->id ?? '' }}
                             </td>
                             <td>
-                                {{ $event->Pname  ?? '' }}
+                                {{ $patient->Pname  ?? '' }}
                             </td>
                             <td>
                             General
                             </td>
                             <td>
-                                {{ $event->phone ?? '' }}
+                                {{ $patient->phone ?? '' }}
                             </td>
                             <td>
-                                {{ $event->dob ?? '' }}
+                                {{ $patient->dob ?? '' }}
                             </td>
                             <td>
-                            {{ $event->email ?? '' }}
+                            {{ $patient->email ?? '' }}
                             </td>
                             <td>
-                                {{ $event->start_time ?? '' }}
+                                {{ $patient->start_time ?? '' }}
                             </td>
                             <td>
                                 @can('event_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('patient-show', $event->id) }}">
+                                    <a class="btn btn-xs btn-primary" href="{{ route('patient-show', $patient->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
                                 @can('event_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('patient-edit', $event->id) }}">
+                                    <a class="btn btn-xs btn-info" href="{{ route('patient-edit', $patient->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
                                 @can('event_delete')
-                                    <form  method="POST" action="{{ route("patient-delete", [$event->id]) }}" onsubmit="return confirm('{{ trans('global.areYouSure') }}');"  style="display: inline-block;">
+                                    <form  method="POST" action="{{ route("patient-delete", [$patient->id]) }}" onsubmit="return confirm('{{ trans('Are You Sure to Deleted  ?') }}');"  style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">

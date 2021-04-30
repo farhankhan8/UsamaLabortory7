@@ -15,7 +15,7 @@
             @csrf  <div class="form-row">
     <div class="col-md-4 mb-3">
     <div class="form-group">
-                <label class="required" for="room_id">Test Catagory</label>
+                <label class="required" for="room_id">Test Category</label>
                 <select class="form-control select2 {{ $errors->has('room') ? 'is-invalid' : '' }}" name="catagory_id" id="room_id" required>
                     @foreach($rooms as $id => $room)
                         <option value="{{ $id }}" {{ old('room_id') == $id ? 'selected' : '' }}>{{ $room }}</option>
@@ -67,7 +67,7 @@
                     <label class="required" for="initialNormalValue">First Normal Range</label>
 
                         <div class=''>
-                            <input type='number' name="initialNormalValue" class="form-control" />
+                        <input class="form-control {{ $errors->has('initialNormalValue') ? 'is-invalid' : '' }}" type="number" name="initialNormalValue" id="initialNormalValue" value="{{ old('initialNormalValue', '') }}" step="1"required>
                              <span class="input-group-addon">
                                  <span class=""></span>
                              </span>
@@ -75,10 +75,11 @@
                     </div>
 
                     <div class="col-md-2">
-                    <label class="required" for="initialNormalValue">Final Normal Range</label>
+                    <label class="required" for="finalNormalValue">Final Normal Range</label>
 
                         <div class='' id=''>
-                            <input type='number' name="finalNormalValue" class="form-control" />
+                        <input class="form-control {{ $errors->has('finalNormalValue') ? 'is-invalid' : '' }}" type="number" name="finalNormalValue" id="finalNormalValue" value="{{ old('finalNormalValue', '') }}" step="1"required>
+
                              <span class="input-group-addon">
                                  <span class=""></span>
                              </span>
@@ -87,10 +88,11 @@
 
 
                     <div class="col-md-2">
-                    <label class="required" for="initialNormalValue">First Critical Value</label>
+                    <label class="required" for="firstCriticalValue">First Critical Value</label>
 
                         <div class='' id=''>
-                            <input type='number' name="firstCriticalValue" class="form-control" />
+                        <input class="form-control {{ $errors->has('firstCriticalValue') ? 'is-invalid' : '' }}" type="number" name="firstCriticalValue" id="firstCriticalValue" value="{{ old('firstCriticalValue', '') }}" step="1"required>
+
                              <span class="input-group-addon">
                                  <span class=" "></span>
                              </span>
@@ -98,10 +100,11 @@
                     </div>
 
                     <div class="col-md-2">
-                    <label class="required" for="initialNormalValue">Final Critical Value</label>
+                    <label class="required" for="finalCriticalValue">Final Critical Value</label>
 
                         <div class=' ' id=''>
-                            <input type='number' name="finalCriticalValue" class="form-control" />
+                        <input class="form-control {{ $errors->has('finalCriticalValue') ? 'is-invalid' : '' }}" type="number" name="finalCriticalValue" id="finalCriticalValue" value="{{ old('finalCriticalValue', '') }}" step="1"required>
+
                              <span class="input-group-addon">
                                  <span class=" "></span>
                              </span>

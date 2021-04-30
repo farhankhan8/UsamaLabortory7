@@ -1,36 +1,36 @@
 <?php
 
-use App\User;
+use App\Status;
 use Illuminate\Database\Seeder;
 
 class StatusTableSeeder extends Seeder
 {
     public function run()
     {
-        $users = [
+        $status = [
             [
                 'id'             => 1,
-                'name'           => 'Progressing',
+                'status'           => 'Progressing',
               
             ],
             [
                 'id'             => 2,
-                'name'           => 'Not Recived',
+                'status'           => 'Verified',
             
             ],
             [
                 'id'             => 3,
-                'name'           => 'Canceld',
+                'status'           => 'Not Received',
             
             ],
             [
                 'id'             => 4,
-                'name'           => 'Verfied',
+                'status'           => 'Cancelled',
             
             ],
         ];
 
-        User::insert($users);
+        Status::insert($status);
 
     }
 }

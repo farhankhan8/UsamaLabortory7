@@ -45,45 +45,45 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($availableTests as $key => $event)
-                        <tr data-entry-id="{{ $event->id }}">
+                    @foreach($availableTests as $key => $availableTest)
+                        <tr data-entry-id="{{ $availableTest->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $event->id ?? '' }}
+                                {{ $availableTest->id ?? '' }}
+                            </td> 
+                            <td>
+                                {{ $availableTest->catagory->Cname ?? '' }}
                             </td>
                             <td>
-                                {{ $event->catagory->Cname ?? '' }}
+                                {{ $availableTest->name ?? '' }}
                             </td>
                             <td>
-                                {{ $event->name ?? '' }}
-                            </td>
-                            <td>
-                            {{ $event->testFee ?? '' }}
+                            {{ $availableTest->testFee ?? '' }}
 
                             </td>
                             	
                             <td>
-                            {{ $event->initialNormalValue ?? '' }}{{ $event->units ?? '' }}-{{ $event->finalNormalValue ?? '' }}{{ $event->units ?? '' }}
+                            {{ $availableTest->initialNormalValue ?? '' }}{{ $availableTest->units ?? '' }}-{{ $availableTest->finalNormalValue ?? '' }}{{ $availableTest->units ?? '' }}
 
                             </td>
                             <td>
                                 @can('event_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('availabel-tests-show', $event->id) }}">
+                                    <a class="btn btn-xs btn-primary" href="{{ route('availabel-tests-show', $availableTest->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
                                 @can('event_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('availabel-tests-edit', $event->id) }}">
+                                    <a class="btn btn-xs btn-info" href="{{ route('availabel-tests-edit', $availableTest->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
                             
 
                                 @can('event_delete')
-                                    <form  method="POST" action="{{ route("avaiable-test-delete", [$event->id]) }}" onsubmit="return confirm('{{ trans('global.areYouSure') }}');"  style="display: inline-block;">
+                                    <form  method="POST" action="{{ route("avaiable-test-delete", [$availableTest->id]) }}" onsubmit="return confirm('{{ trans('Are You Sure to Deleted  ?') }}');"  style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">

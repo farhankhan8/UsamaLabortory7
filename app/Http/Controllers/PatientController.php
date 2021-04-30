@@ -1,20 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Event;
 use App\Http\Controllers\Controller;
-
-use App\Room;
-use App\Artical;
 use App\AvailableTest;
 use App\TestPerformed;
-use App\AvailableTestPatient;
 use Session;
-
 use App\Catagory;
-
-use App\Services\EventService;
 use App\Patient;
 use Gate;
 use Illuminate\Http\Request;
@@ -25,11 +16,9 @@ class PatientController extends Controller
     public function index()
     {
          abort_if(Gate::denies('room_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $events  = Patient::all();
+        $patients  = Patient::all();
         // dd($events);
-
-        return view('admin.patient.index', compact('events'));
+        return view('admin.patient.index', compact('patients'));
     }
     public function create()
     {
@@ -82,16 +71,17 @@ class PatientController extends Controller
     {
     
          $patient = Patient::findOrFail($id);
-         $getTestPerformed = AvailableTest::all()->pluck('name');
-         $getTestFee = AvailableTest::all()->pluck('testFee');
-         $getTestUnits = AvailableTest::all()->pluck('units');
+        //  $a
+        //  $getTestPerformed = AvailableTest::all()->pluck('name');
+        //  $getTestFee = AvailableTest::all()->pluck('testFee');
+        //  $getTestUnits = AvailableTest::all()->pluck('units');
 
 
         //   dd($getTestPerformed);
       
 
 
-        return view('admin.patient.show', compact('patient','getTestPerformed','getTestFee','getTestUnits'));
+        return view('admin.patient.show', compact('patient'));
     }
 
     public function destroy($id)

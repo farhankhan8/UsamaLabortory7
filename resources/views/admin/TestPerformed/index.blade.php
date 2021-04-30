@@ -4,14 +4,14 @@
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("create") }}">
-            Add New Test
+            Performed New Test
             </a>
         </div>
     </div>
 @endcan
 <div class="card">
     <div class="card-header">
-    List of Available Tests
+    List of Performed Tests
     </div>
 
     <div class="card-body">
@@ -55,59 +55,69 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($events as $key => $event)
-                        <tr data-entry-id="{{ $event->id }}">
+                    @foreach($testPerformeds as $key => $testPerformed)
+                        <tr data-entry-id="{{ $testPerformed->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $event->id ?? '' }}
+                                {{ $testPerformed->id ?? '' }}
                             </td>
                             <td>
-                                {{ $event->Cname }}
+                                {{ $testPerformed->Cname }}
                             </td>
                             <td>
-                                {{ $event->name }}
+                                {{ $testPerformed->name }}
                             </td>
                             <td>
-                            {{ $event->Pname }}
+                            {{ $testPerformed->Pname }}
 
                             </td>
                             <td>
-                            {{ $event->testFee }}
+                            {{ $testPerformed->testFee }}
 
                             </td>
                             <td>
-                            {{ $event->initialNormalValue }}{{ $event->units }}-{{ $event->finalNormalValue }}{{ $event->units }}
+                            {{ $testPerformed->initialNormalValue }}{{ $testPerformed->units }}-{{ $testPerformed->finalNormalValue }}{{ $testPerformed->units }}
 
 
 
                             </td>
                             <td>
-                            {{ $event->dob }}
+                            {{ $testPerformed->dob }}
 
                             </td>
                             <td>
-                            {{ $event->state }}
-
+                            @if ($testPerformed->state =='Progressing')
+                            <button class="btn btn-xs btn-info">{{ $testPerformed->state ?? '' }}</button>
+                               @elseif ($testPerformed->state =='Verified')
+                               <button class="btn btn-xs btn-primary">{{ $testPerformed->state ?? '' }}</button>
+                          
+                               @elseif ($testPerformed->state =='Not Received')
+                               <button class="btn btn-xs  btn-warning">{{ $testPerformed->state ?? '' }}</button>
+                               @elseif ($testPerformed->state =='Cancelled')
+                               <button class="btn btn-xs btn-danger">{{ $testPerformed->state ?? '' }}</button>
+                             @else
+                             I don't have any records!
+                                 @endif
                             </td>
                        
                             <td>
                                 @can('event_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('test-performed-show', $event->id) }}">
+                                    <a class="btn btn-xs btn-primary" href="{{ route('test-performed-show', $testPerformed->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
                                 @can('event_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('test-performed-edit', $event->id) }}">
+                                    <a class="btn btn-xs btn-info" href="{{ route('test-performed-edit', $testPerformed->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
                             
 
                                 @can('event_delete')
-                                    <form  method="POST" action="{{ route("performed-test-delete", [$event->id]) }}" onsubmit="return confirm('{{ trans('global.areYouSure') }}');"  style="display: inline-block;">
+                                    <form  method="POST" action="{{ route("performed-test-delete", [$testPerformed->id]) }}" onsubmit="return confirm('{{ trans('global.areYouSure') }}');"  style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">

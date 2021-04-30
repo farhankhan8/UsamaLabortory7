@@ -4,7 +4,7 @@
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("catagory-create") }}">
-            Add New Catagory
+            Add New Category
             </a>
         </div>
     </div>
@@ -26,7 +26,7 @@
                         Id
                         </th>
                         <th>
-                     Catagory
+                        Category 
                         </th>
                     
                       
@@ -37,34 +37,34 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($availableTests as $key => $event)
-                        <tr data-entry-id="{{ $event->id }}">
+                    @foreach($categoryes as $key => $category)
+                        <tr data-entry-id="{{ $category->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $event->id ?? '' }}
+                                {{ $category->id ?? '' }}
                             </td>
                             <td>
-                                {{ $event->Cname ?? '' }}
+                                {{ $category->Cname ?? '' }}
                             </td>
                         
                             <td>
                                 @can('event_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('catagory-show', $event->id) }}">
+                                    <a class="btn btn-xs btn-primary" href="{{ route('catagory-show', $category->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
                                 @can('event_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('catagory-edit', $event->id) }}">
+                                    <a class="btn btn-xs btn-info" href="{{ route('catagory-edit', $category->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
                             
 
                                 @can('event_delete')
-                                    <form  method="POST" action="{{ route("catagory-delete", [$event->id]) }}" onsubmit="return confirm('{{ trans('global.areYouSure') }}');"  style="display: inline-block;">
+                                    <form  method="POST" action="{{ route("catagory-delete", [$category->id]) }}" onsubmit="return confirm('{{ trans('Are You Sure to Deleted  ?') }}');"  style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">

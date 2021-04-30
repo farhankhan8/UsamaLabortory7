@@ -7,11 +7,6 @@
     </div>
 
     <div class="card-body">
-
-
-
-    
-
     <form method="POST" action="{{ route("patient-update", [$room->id]) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
@@ -156,7 +151,7 @@
 
 
 
-  <button class="btn btn-primary" type="submit">Submit form</button>
+  <button class="btn btn-primary" type="submit">Update</button>
   </div>
   </div>
   </div>
@@ -165,35 +160,6 @@
 Looks good!
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
          
         </form>

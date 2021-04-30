@@ -13,7 +13,7 @@
     <div class="form-group">
                <b> <label  for="user_id">Test Catagory</label></b>
               
-            <p>{{ $b->catagory->Cname }}</p>
+            <p>{{ $getavailableTestName->catagory->Cname }}</p>
 
             </div>
       <div class="valid-feedback">
@@ -26,7 +26,7 @@
                
 
 
-                <p>{{ $b->name }}</p>
+                <p>{{ $getavailableTestName->name }}</p>
 
             </div>
       <div class="valid-feedback">
@@ -39,7 +39,7 @@
     <div class="col-md-2 mb-3">
            <div class="form-group">
                 <b><label  for="available_test_id">Patient Name</label></b>
-               <p> {{ $a->Pname }}</p>
+               <p> {{ $getpatient->Pname }}</p>
 
 
             </div>
@@ -59,7 +59,7 @@
            <div class="form-group">
                 <b><label  for="state">Stander Charges</label></b>
              
-<p>{{ $b->testFee+100 }}</p>
+<p>{{ $getavailableTestName->testFee+100 }}</p>
 
 
             </div>
@@ -73,7 +73,7 @@
                 <b><label  for="start_time">Charged Amount</label></b>
            
 
-                <p>{{ $b->testFee }}</p>
+                <p>{{ $getavailableTestName->testFee }}</p>
 
 
             </div>
@@ -82,15 +82,15 @@
         <div class="form-group">
                 <b><label  for="">Status</label></b>
              <p>
-                @if ($roo->state == 'Progressing')
-                            <button class="btn btn-xs btn-info">{{ $roo->state ?? '' }}</button>
-                               @elseif ($roo->state == 'Varified')
-                               <button class="btn btn-xs btn-primary">{{ $rooms->state ?? '' }}</button>
+                @if ($testPerformedsId->state == 'Progressing')
+                            <button class="btn btn-xs btn-info">{{ $testPerformedsId->state ?? '' }}</button>
+                               @elseif ($testPerformedsId->state == 'Varified')
+                               <button class="btn btn-xs btn-primary">{{ $testPerformedsId->state ?? '' }}</button>
                           
-                               @elseif ($roo->state == 'Not Recived')
-                               <button class="btn btn-xs  btn-warning">{{ $roo->state ?? '' }}</button>
-                               @elseif ($roo->state =='Cancelled')
-                               <button class="btn btn-xs btn-danger">{{ $roo->state ?? '' }}</button>
+                               @elseif ($testPerformedsId->state == 'Not Recived')
+                               <button class="btn btn-xs  btn-warning">{{ $testPerformedsId->state ?? '' }}</button>
+                               @elseif ($testPerformedsId->state =='Cancelled')
+                               <button class="btn btn-xs btn-danger">{{ $testPerformedsId->state ?? '' }}</button>
                              @else
                              I don't have any records!
                                  @endif
@@ -117,7 +117,7 @@
 <div class="col-md-2 mb-3">
 <div class="form-group">
     <b><label  for="user_id">Test Time</label></b>
-    <p>{{ $roo->start_time }}</p>
+    <p>{{ $testPerformedsId->start_time }}</p>
 
 
 
@@ -134,7 +134,7 @@ Looks good!
 <div class="form-group">
     <b><label  for="available_test_id">Reporting Time</label></b>
    
-    <p>{{ $roo->start_time }}</p>
+    <p>{{ $testPerformedsId->start_time }}</p>
 
 
 </div>
@@ -149,7 +149,7 @@ Looks good!
 <div class="form-group">
     <b><label  for="available_test_id">Normal Range</label></b>
    
-<p>  {{ $b->initialNormalValue }}{{ $b->units ?? '' }}-{{ $b->finalNormalValue }}{{ $b->units ?? '' }}</p>
+<p>  {{ $getavailableTestName->initialNormalValue }}{{ $getavailableTestName->units ?? '' }}-{{ $getavailableTestName->finalNormalValue }}{{ $getavailableTestName->units ?? '' }}</p>
 
 
 </div>

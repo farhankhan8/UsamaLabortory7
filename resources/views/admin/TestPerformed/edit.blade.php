@@ -61,9 +61,10 @@
     <div class="col-md-4 mb-3">
     <div class="form-group">
                 <label class="required" for="state ">Select State</label>
-                <select class="form-control select2 {{ $errors->has('state') ? 'is-invalid' : '' }}" name="state " id="state " required>
-                    @foreach($states as $id => $currentState)
-                        <option value="{{ $id }}" {{ $performed->id == $id ? 'selected' : '' }}>{{ $currentState }}</option>
+                <select class="form-control"name="state" id="state" required>
+
+                    @foreach($states as $id => $currentStat)
+                        <option value="{{ $id }}" {{ $performed->state == $id ? 'selected' : '' }}>{{ $currentStat }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('state '))
