@@ -12,17 +12,18 @@ class Catagory extends Model
     public $table = 'catagories';
 
     protected $fillable = [
-        'name',
+        'Cname',
     ];
     public function availableTest()
     {
-        return $this->hasMany(AvailableTest::class,'catagory_id','id');
+        return $this->hasMany(AvailableTest::class);
 
     }
-    //   public function test()
-    //   {
-    //       return $this->belongsTo(Test::class);
+    // public function cata()
+    // {
+    //     return $this->hasMany(AvailableTestPatient::class);
 
-    //   }
+    // }
+  
 
 }

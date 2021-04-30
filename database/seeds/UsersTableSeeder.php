@@ -19,10 +19,10 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'id'             => 2,
-                'name'           => 'User',
+                'name'           => 'Receptionest',
                 'phone'          => '03053183069',
                 'start_time'     => '2021-04-12-16-50-00',
-                'email'          => 'user@user.com',
+                'email'          => 'receptionest@receptionest.com',
                 'password'       => '$2y$10$VOunUZVMv4bwC84FJngVdORh/3WOQsLYXcHOTcmsVFWTVWWg.V8/i',
                 'remember_token' => null,
             ],

@@ -9,22 +9,22 @@ class TestPerformed extends Model
     public $table = 'test_performeds';
 
     protected $fillable = [
-        'user_id',
         'available_test_id',
-        'catagory_id'
+        'patient_id',
+        'start_time',
+        'state',
+        'testResult',
       
     ];
+     public function patient()
+     {
+         return $this->belongsTo(Patient::class);
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-    public function availableTest()
-    {
-        return $this->hasMany(AvailableTest::class);
-    }
-    public function catagory1()
-    {
-        return $this->belongsTo(Catagory::class);
-    }
+     }
+     public function availableTest()
+     {
+         return $this->belongsTo(AvailableTest::class);
+
+     }
+  
 }

@@ -34,7 +34,7 @@ class AvailableTestController extends Controller
     public function create()
     {
         // abort_if(Gate::denies('room_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-         $rooms = Catagory::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+         $rooms = Catagory::all()->pluck('Cname', 'id')->prepend(trans('global.pleaseSelect'), '');
 
 
         return view('admin.availableTests.create',compact('rooms'));
@@ -49,13 +49,15 @@ class AvailableTestController extends Controller
         return redirect()->route('available-tests');
 
 
-    }
+    }   
     public function edit($id)
     {
-        $room = AvailableTest::findOrFail($id);
+        $availableTest = AvailableTest::findOrFail($id);
+        $catagorys = Catagory::all()->pluck('Cname', 'id')->prepend(trans('global.pleaseSelect'), '');
+
 
         // abort_if(Gate::denies('room_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        return view('admin.availableTests.edit', compact('room'));
+        return view('admin.availableTests.edit', compact('availableTest','catagorys'));
     }
     
     public function update($id, Request $request)

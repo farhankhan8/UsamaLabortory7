@@ -20,6 +20,11 @@ class CreateAvailableTestsTable extends Migration
             $table->double('testFee');
             $table->integer('initialNormalValue');
             $table->integer('finalNormalValue');
+            $table->integer('firstCriticalValue');
+            $table->integer('finalCriticalValue');
+
+            $table->string('units');
+
             $table->timestamps();
             $table->foreign('catagory_id')->references('id')->on('catagories')
                 ->onDelete('cascade')

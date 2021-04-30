@@ -4,19 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Event;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroyAvailableTestRequest;
-use App\Http\Requests\StoreEventRequest;
-use App\Http\Requests\SoreAvailableTestRequest;
-use App\Http\Requests\UpdateAvailableTestRequest;
+
 use App\Room;
+use App\Artical;
 use App\AvailableTest;
 use App\TestPerformed;
+use App\AvailableTestPatient;
 use Session;
 
 use App\Catagory;
 
 use App\Services\EventService;
-use App\User;
+use App\Patient;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,34 +24,40 @@ class PatientController extends Controller
 {
     public function index()
     {
-        // abort_if(Gate::denies('room_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+         abort_if(Gate::denies('room_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $events  = User::all();
+        $events  = Patient::all();
+        // dd($events);
 
         return view('admin.patient.index', compact('events'));
     }
     public function create()
     {
-        // abort_if(Gate::denies('room_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //  abort_if(Gate::denies('room_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
          $rooms = Catagory::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
 
-        return view('admin.availableTests.create',compact('rooms'));
+        return view('admin.patient.create',compact('rooms'));
     }
  
 
 
-    public function store(SoreAvailableTestRequest $request)
+    public function store(Request $request)
     {
-        $room = AvailableTest::create($request->all());
+        $this->validate($request,[
+            'Pname' => 'required|max:120',
+            'email' => 'required|email|unique:users',
+            'phone' => 'required|min:11|numeric',
+            ]);
+        $room = Patient::create($request->all());
 
-        return redirect()->route('available-tests');
+        return redirect()->route('patient-list');
 
 
     }
     public function edit($id)
     {
-        $room = User::findOrFail($id);
+        $room = Patient::findOrFail($id);
 
         // abort_if(Gate::denies('room_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         return view('admin.patient.edit', compact('room'));
@@ -60,11 +65,11 @@ class PatientController extends Controller
     
     public function update($id, Request $request)
 {
-    $task = User::findOrFail($id);
+    $task = Patient::findOrFail($id);
 
 
 
-    $input = $request->all();
+    $input = $request->all(); 
 
     $task->fill($input)->save();
 
@@ -75,14 +80,23 @@ class PatientController extends Controller
 
     public function show($id)
     {
-        $rooms = User::findOrFail($id);
+    
+         $patient = Patient::findOrFail($id);
+         $getTestPerformed = AvailableTest::all()->pluck('name');
+         $getTestFee = AvailableTest::all()->pluck('testFee');
+         $getTestUnits = AvailableTest::all()->pluck('units');
 
-        return view('admin.patient.show', compact('rooms'));
+
+        //   dd($getTestPerformed);
+      
+
+
+        return view('admin.patient.show', compact('patient','getTestPerformed','getTestFee','getTestUnits'));
     }
 
     public function destroy($id)
     {
-        $task = User::findOrFail($id);
+        $task = Patient::findOrFail($id);
     
         $task->delete();
     

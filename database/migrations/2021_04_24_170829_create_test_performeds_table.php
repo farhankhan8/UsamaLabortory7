@@ -15,20 +15,21 @@ class CreateTestPerformedsTable extends Migration
     {
         Schema::create('test_performeds', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('available_test_id');
-            $table->unsignedBigInteger('catagory_id');
+            $table->unsignedBigInteger('patient_id');
 
-            $table->timestamps();
+
             $table->foreign('available_test_id')->references('id')->on('available_tests')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-
-                $table->foreign('catagory_id')->references('id')->on('catagories')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-
+                
+            $table->foreign('patient_id')->references('id')->on('patients')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+            $table->datetime('start_time');
+            $table->string('state');
+            $table->integer('testResult');
+            $table->timestamps();
         });
     }
 

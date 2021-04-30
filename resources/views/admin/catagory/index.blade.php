@@ -11,8 +11,7 @@
 @endcan
 <div class="card">
     <div class="card-header">
-    List Available Tests
-        {{ trans('cruds.event.title_singular') }} {{ trans('global.list') }}
+    Catagory
     </div>
 
     <div class="card-body">
@@ -47,7 +46,7 @@
                                 {{ $event->id ?? '' }}
                             </td>
                             <td>
-                                {{ $event->name ?? '' }}
+                                {{ $event->Cname ?? '' }}
                             </td>
                         
                             <td>

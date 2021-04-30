@@ -9,16 +9,16 @@ class Test extends Model
     public $table = 'tests';
 
     protected $fillable = [
-        'user_id',
-        'available_test_id',
         'start_time',
+        'state',
+        'testResult'
       
     ];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+    // public function patient()
+    // {
+    //     return $this->belongsToMany(Patient::class);
+    // }
      
     public function availableTest()
     {
@@ -28,5 +28,10 @@ class Test extends Model
     // {
     //     return $this->belongsTo(Catagory::class,'id');
     // }
+
+    public function patient()
+    {
+        return $this->belongsToMany(Patient::class);
+    }
 
 }

@@ -11,8 +11,7 @@
 @endcan
 <div class="card">
     <div class="card-header">
-    List Available Tests
-        {{ trans('cruds.event.title_singular') }} {{ trans('global.list') }}
+    List of Available Tests
     </div>
 
     <div class="card-body">
@@ -55,7 +54,7 @@
                                 {{ $event->id ?? '' }}
                             </td>
                             <td>
-                                {{ $event->catagory->name ?? '' }}
+                                {{ $event->catagory->Cname ?? '' }}
                             </td>
                             <td>
                                 {{ $event->name ?? '' }}
@@ -64,9 +63,9 @@
                             {{ $event->testFee ?? '' }}
 
                             </td>
-                         
+                            	
                             <td>
-                            {{ $event->initialNormalValue ?? '' }}-{{ $event->finalNormalValue ?? '' }}
+                            {{ $event->initialNormalValue ?? '' }}{{ $event->units ?? '' }}-{{ $event->finalNormalValue ?? '' }}{{ $event->units ?? '' }}
 
                             </td>
                             <td>

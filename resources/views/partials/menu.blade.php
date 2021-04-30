@@ -80,7 +80,7 @@
                                 </a>
                             </li>
                         @endcan
-                        @can('role_access')
+                        <!-- @can('role_access')
                             <li class="nav-item">
                                 <a href="{{ route("available-tests") }}" class="nav-link {{ request()->is('')  ? 'active' : '' }}">
                                     <i class="fa-fw fas fa-briefcase nav-icon">
@@ -89,7 +89,7 @@
                                     Available Tests
                                 </a>
                             </li>
-                        @endcan
+                        @endcan -->
                    
                     </ul>
                 </li>
@@ -123,7 +123,7 @@
                                 </a>
                             </li>
                         @endcan
-                        @can('role_access')
+                        <!-- @can('role_access')
                             <li class="nav-item">
                                 <a href="{{ route("available-tests") }}" class="nav-link {{ request()->is('')  ? 'active' : '' }}">
                                     <i class="fa-fw fas fa-briefcase nav-icon">
@@ -132,7 +132,7 @@
                                     Available Tests
                                 </a>
                             </li>
-                        @endcan
+                        @endcan -->
                    
                     </ul>
                 </li>
@@ -176,7 +176,7 @@
 
 
 
-
+<!-- 
 
 
 
@@ -277,7 +277,7 @@
                     </i>
                     Search room
                 </a>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                     <i class="nav-icon fas fa-fw fa-sign-out-alt">

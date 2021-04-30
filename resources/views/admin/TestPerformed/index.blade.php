@@ -4,14 +4,14 @@
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("create") }}">
-            Performed New Test
+            Add New Test
             </a>
         </div>
     </div>
 @endcan
 <div class="card">
     <div class="card-header">
-    All Tests Performed Today
+    List of Available Tests
     </div>
 
     <div class="card-body">
@@ -23,10 +23,10 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.event.fields.id') }}
+                        Id
                         </th>
                         <th>
-                        Catagory
+                        Test Catagory
                         </th>
                         <th>
                         Test Name
@@ -36,16 +36,19 @@
                         </th>
                         <th>
                         Test Fee
-                            <!-- {{ trans('cruds.event.fields.start_time') }} -->
                         </th>
                         <th>
                         Normal Range
                         </th>
                         <th>
                         Start Time
-
                         </th>
-                        
+                        <th>
+                        Status
+                        </th>
+                      
+                      
+                      
                         <th>
                             &nbsp;
                         </th>
@@ -61,24 +64,34 @@
                                 {{ $event->id ?? '' }}
                             </td>
                             <td>
-                                {{ $event->availableTest->catagory->name  ?? '' }}
+                                {{ $event->Cname }}
                             </td>
                             <td>
-                                {{ $event->availableTest->name ?? '' }}
+                                {{ $event->name }}
                             </td>
                             <td>
-                                {{ $event->user->name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $event->availableTest->testFee ?? '' }}
-                            </td>
-                            <td>
-                                {{ $event->availableTest->initialNormalValue ?? '' }}- {{ $event->availableTest->finalNormalValue ?? '' }}
+                            {{ $event->Pname }}
 
                             </td>
                             <td>
-                                {{ $event->start_time ?? '' }}
+                            {{ $event->testFee }}
+
                             </td>
+                            <td>
+                            {{ $event->initialNormalValue }}{{ $event->units }}-{{ $event->finalNormalValue }}{{ $event->units }}
+
+
+
+                            </td>
+                            <td>
+                            {{ $event->dob }}
+
+                            </td>
+                            <td>
+                            {{ $event->state }}
+
+                            </td>
+                       
                             <td>
                                 @can('event_show')
                                     <a class="btn btn-xs btn-primary" href="{{ route('test-performed-show', $event->id) }}">
@@ -91,6 +104,8 @@
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
+                            
+
                                 @can('event_delete')
                                     <form  method="POST" action="{{ route("performed-test-delete", [$event->id]) }}" onsubmit="return confirm('{{ trans('global.areYouSure') }}');"  style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">

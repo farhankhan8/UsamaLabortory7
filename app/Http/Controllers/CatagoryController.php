@@ -11,6 +11,8 @@ use App\Http\Requests\UpdateAvailableTestRequest;
 use App\Room;
 use App\AvailableTest;
 use App\TestPerformed;
+use App\Artical;
+use App\Tag;
 use Session;
 
 use App\Catagory;
@@ -25,7 +27,8 @@ class CatagoryController extends Controller
 {
     public function index()
     {
-        // abort_if(Gate::denies('room_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+       
+         abort_if(Gate::denies('room_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $availableTests   = Catagory::all();
 
@@ -33,7 +36,7 @@ class CatagoryController extends Controller
     }
     public function create()
     {
-        // abort_if(Gate::denies('room_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+         abort_if(Gate::denies('room_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
          $rooms = Catagory::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
 
@@ -58,7 +61,7 @@ class CatagoryController extends Controller
     {
         $room = Catagory::findOrFail($id);
 
-        // abort_if(Gate::denies('room_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+         abort_if(Gate::denies('room_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         return view('admin.catagory.edit', compact('room'));
     }
     
@@ -80,8 +83,11 @@ class CatagoryController extends Controller
     public function show($id)
     {
         $rooms = Catagory::findOrFail($id);
+        $testName = $rooms->availableTest->pluck('name');
+        // dd($testName);
+        // dd($testName);
 
-        return view('admin.catagory.show', compact('rooms'));
+        return view('admin.catagory.show', compact('rooms','testName'));
     }
 
     public function destroy($id)

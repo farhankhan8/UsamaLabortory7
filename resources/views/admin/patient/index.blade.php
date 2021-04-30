@@ -3,7 +3,7 @@
 @can('event_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route("register") }}">
+            <a class="btn btn-success" href="{{ route("patient-create") }}">
             Register New Patient
             </a>
         </div>
@@ -35,7 +35,7 @@
                         Phone
                         </th>
                         <th>
-                        Date of Registration
+                         Birthday
                             <!-- {{ trans('cruds.event.fields.start_time') }} -->
                         </th>
                         <th>
@@ -61,7 +61,7 @@
                                 {{ $event->id ?? '' }}
                             </td>
                             <td>
-                                {{ $event->name  ?? '' }}
+                                {{ $event->Pname  ?? '' }}
                             </td>
                             <td>
                             General
@@ -70,7 +70,7 @@
                                 {{ $event->phone ?? '' }}
                             </td>
                             <td>
-                                {{ $event->start_time ?? '' }}
+                                {{ $event->dob ?? '' }}
                             </td>
                             <td>
                             {{ $event->email ?? '' }}

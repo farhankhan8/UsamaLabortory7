@@ -93,10 +93,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Transaction::class);
     }
-    public function test()
-    {
-        return $this->hasMany(AvailableTest::class);
-    }
+  
 
     public function chargeCredits($hours, Room $room)
     {
@@ -115,12 +112,7 @@ class User extends Authenticatable
             'paid_amount'  => $amount,
             'booking_time' => $hours,
         ]);
-        TestPerformed::create([
-            'user_id'      => $this->id,
-            'available_test_id'      => $this->id,
-            'catagory_id' => $this->catagory_id,
-        
-        ]);
+   
 
         return true;
     }

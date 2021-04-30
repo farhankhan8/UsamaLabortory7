@@ -14,20 +14,27 @@ class AvailableTest extends Model
         'testFee',
         'initialNormalValue',
         'finalNormalValue',
-      
-    
+        'firstCriticalValue',
+        'finalCriticalValue',
+        'units',
     ];
-
-
     public function catagory()
     {
         return $this->belongsTo(Catagory::class);
 
     }
-    public function test()
+
+    public function testPerformed()
     {
-        return $this->hasMany(Test::class,'available_test_id','id');
+        return $this->hasMany(TestPerformed::class);
+
     }
- 
+    // public function patient()
+    // {
+    //     return $this->belongsTo(Patient::class);
+
+    // }
+    
+    
 
 }
