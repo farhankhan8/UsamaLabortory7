@@ -11,8 +11,8 @@ class TestPerformed extends Model
     protected $fillable = [
         'available_test_id',
         'patient_id',
+        'Sname_id',
         'start_time',
-        'state',
         'testResult',
       
     ];
@@ -26,5 +26,9 @@ class TestPerformed extends Model
          return $this->belongsTo(AvailableTest::class);
 
      }
-  
+     public function status()
+     {
+         return $this->belongsTo(Status::class);
+
+     }
 }

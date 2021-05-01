@@ -15,13 +15,14 @@ use Symfony\Component\HttpFoundation\Response;
 class TestsPerformedController extends Controller
 {
     public function index()
-    {
+    { 
         abort_if(Gate::denies('event_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $testPerformeds = DB::table('test_performeds')
             ->join('patients', 'test_performeds.patient_id', '=', 'patients.id')
+            ->join('statuses', 'test_performeds.Sname_id', '=', 'statuses.id')
             ->join('available_tests', 'test_performeds.available_test_id', '=', 'available_tests.id')
             ->join('catagories', '.available_tests.catagory_id', '=', 'catagories.id')
-            ->select('test_performeds.*', 'patients.Pname','patients.dob','available_tests.name','available_tests.testFee','available_tests.initialNormalValue','available_tests.finalNormalValue','available_tests.units','catagories.Cname')
+            ->select('test_performeds.*', 'patients.Pname','patients.dob','available_tests.name','available_tests.testFee','available_tests.initialNormalValue','available_tests.finalNormalValue','available_tests.units','catagories.Cname','statuses.Sname')
             ->orderBy('patient_id', 'DESC')
             ->get();
         return view('admin.TestPerformed.index', compact('testPerformeds'));
@@ -32,7 +33,7 @@ class TestsPerformedController extends Controller
         abort_if(Gate::denies('event_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $patientNames = Patient::all()->pluck('Pname', 'id')->prepend(trans('global.pleaseSelect'), '');
         $availableTests = AvailableTest::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-        $stat = Status::all()->pluck('status', 'status')->prepend(trans('global.pleaseSelect'), '');
+        $stat = Status::all()->pluck('Sname', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.TestPerformed.create', compact('patientNames','availableTests','stat'));
     }
@@ -48,10 +49,11 @@ class TestsPerformedController extends Controller
         $performed  = TestPerformed::findOrFail($id);
         $getNameFromAvailbles = AvailableTest::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
         $patientNames = Patient::all()->pluck('Pname', 'id')->prepend(trans('global.pleaseSelect'), '');
-        $states = TestPerformed::pluck('state', 'state')->prepend(trans('global.pleaseSelect'), '');
-        // $statuses = Status::all()->pluck('status', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $books = Status::pluck('Sname', 'id')->prepend(trans('global.pleaseSelect'), '');
+        // $statuses = Status::pluck('Sname');
+        // dd($statuses);
 
-        return view('admin.TestPerformed.edit', compact('performed','getNameFromAvailbles','patientNames','states'));
+        return view('admin.TestPerformed.edit', compact('performed','getNameFromAvailbles','patientNames','books'));
     }
     public function update($id, Request $request)
     {

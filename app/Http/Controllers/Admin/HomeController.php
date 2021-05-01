@@ -1,23 +1,15 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
-use App\Test;
 use App\AvailableTest;
-use App\labAttdent;
-use App\test_catagory;
-use App\Farhan;
-use App\devices;
-use App\TestCatagory;
 use App\TestPerformed;
 use App\Catagory;
-use App\AvailableTestPatient;
 use DB;
 class HomeController
 {
     public function index()
     {
         
-        $data = DB::table('test_performeds')->where('state', '=', 'Varified')->get();
+        $data = DB::table('test_performeds')->where('Sname_id', '=', 'Verified')->get();
         $today =$data->where('created_at', '>=', date('Y-m-d H:i:s',strtotime('-1 days')) )->count();
         $thisWeekPatient=$data->where('created_at', '>=', date('Y-m-d H:i:s',strtotime('7 days')) )->count();
         $thisMongthPatient=$data->where('created_at', '>=', date('Y-m-d H:i:s',strtotime('30 days')) )->count();
@@ -42,17 +34,35 @@ class HomeController
 
     
        
-        $dat = TestPerformed::where('state', '=', 'Progressing')->get();
+        $dat = TestPerformed::where('Sname_id', '=', 'Progressing')->get();
         $todayCri =$dat->where('start_time', '>=', date('Y-m-d H:i:s',strtotime('-1 days')) );
      
 
         $testPerformed = TestPerformed::get();
+
+
+        $testPerformeds = DB::table('test_performeds')
+        ->join('patients', 'test_performeds.patient_id', '=', 'patients.id')
+        ->join('statuses', 'test_performeds.Sname_id', '=', 'statuses.id')
+        ->join('available_tests', 'test_performeds.available_test_id', '=', 'available_tests.id')
+        ->join('catagories', '.available_tests.catagory_id', '=', 'catagories.id')
+        ->select('catagories.Cname','available_tests.name','patients.Pname','statuses.Sname')
+        ->orderBy('patient_id', 'DESC')
+        ->get();
+        // dd($testPerformeds);
+
+
+
+
+
+
+
         $distincrCatagory = Catagory::distinct()->get();
         $distincrCatagory2 = TestPerformed::get('available_test_id')->count();
 
      
         return view('home', compact('today','thisWeekPatient','thisMongthPatient','testPerformed','distincrCatagory',
-        'distincrCatagory2','todayCri','criticalTestToday'));
+        'distincrCatagory2','todayCri','criticalTestToday','testPerformeds'));
         
     }
     public function dashboard(Request $request)

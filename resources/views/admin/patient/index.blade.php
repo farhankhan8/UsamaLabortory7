@@ -36,7 +36,6 @@
                         </th>
                         <th>
                          Birthday
-                            <!-- {{ trans('cruds.event.fields.start_time') }} -->
                         </th>
                         <th>
                         Email

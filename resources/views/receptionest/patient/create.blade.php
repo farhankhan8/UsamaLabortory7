@@ -15,12 +15,12 @@
             <div class="form-row">
     <div class="col-md-4 mb-3">
     <div class="form-group">
-                <label class="required" for="name">Enter Patient Name</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
+                <label class="required" for="Pname">Enter Patient Name</label>
+                <input class="form-control {{ $errors->has('Pname') ? 'is-invalid' : '' }}" type="text" name="Pname" id="Pname" value="{{ old('Pname', '') }}" required>
 
-                @if($errors->has('name'))
+                @if($errors->has('Pname'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('name') }}
+                        {{ $errors->first('Pname') }}
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.event.fields.room_helper') }}</span>
@@ -135,7 +135,7 @@
       </div>
     </div>
   </div>
-  <button class="btn btn-primary" type="submit">Submit form</button>
+  <button class="btn btn-primary" type="submit">Submit</button>
 </form>
 
 

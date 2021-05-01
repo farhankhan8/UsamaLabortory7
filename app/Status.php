@@ -9,16 +9,16 @@ class Status extends Model
     public $table = 'statuses';
 
     protected $fillable = [
-        'status',
+        'Sname',
         
 
       
     ];
 
-    //  public function testt()
-    //  {
-    //      return $this->belongsTo(Test::class);
-    //  }
+      public function testPerformed()
+      {
+          return $this->hasMany(TestPerformed::class);
+      }
      
     //  public function availableTest()
     //  {

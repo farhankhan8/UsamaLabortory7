@@ -61,15 +61,15 @@
 
     <div class="col-md-4 mb-3">
            <div class="form-group">
-                <label class="required" for="state">Select Test Status</label>
-                <select class="form-control select2 {{ $errors->has('state') ? 'is-invalid' : '' }}" name="state" id="state" required>
+                <label class="required" for="Sname_id">Select Test Status</label>
+                <select class="form-control select2 {{ $errors->has('Sname_id') ? 'is-invalid' : '' }}" name="Sname_id" id="Sname_id" required>
                     @foreach($stat as $id => $sta)
-                        <option value="{{ $id }}" {{ old('state') == $id ? 'selected' : '' }}>{{ $sta }}</option>
+                        <option value="{{ $id }}" {{ old('Sname_id') == $id ? 'selected' : '' }}>{{ $sta }}</option>
                     @endforeach
                 </select>
-                @if($errors->has('state'))   
+                @if($errors->has('Sname_id'))   
                     <div class="invalid-feedback">
-                        {{ $errors->first('state') }}
+                        {{ $errors->first('Sname_id') }}
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.event.fields.user_helper') }}</span>

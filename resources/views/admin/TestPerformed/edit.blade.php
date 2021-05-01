@@ -58,18 +58,18 @@
     
 
 
-    <div class="col-md-4 mb-3">
+    <div class="col-md-4 mb-3">                                                                                                                                                                     
     <div class="form-group">
-                <label class="required" for="state ">Select State</label>
-                <select class="form-control"name="state" id="state" required>
+                <label class="required" for="Sname_id ">Select State</label>
+                <select class="form-control"name="Sname_id" id="Sname_id" required>
 
-                    @foreach($states as $id => $currentStat)
-                        <option value="{{ $id }}" {{ $performed->state == $id ? 'selected' : '' }}>{{ $currentStat }}</option>
+                    @foreach($books as $id => $book)
+                        <option value="{{ $id }}" {{ $performed->Sname_id == $id ? 'selected' : '' }}>{{ $book }}</option>
                     @endforeach
                 </select>
-                @if($errors->has('state '))
+                @if($errors->has('Sname_id '))
                     <div class="invalid-feedback">
-                        {{ $errors->first('state ') }}
+                        {{ $errors->first('Sname_id ') }}
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.event.fields.user_helper') }}</span>

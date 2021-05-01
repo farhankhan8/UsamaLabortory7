@@ -130,11 +130,11 @@
 <div class="form-group">
                                     <label for="gend" class= "col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
                             <div class="form-check form-check-inline" >
-                                <input class="form-check-input" type="radio" name="gend" value="male">
+                                <input class="form-check-input" type="radio" name="gend" value="male" {{ $room->gend == 'male' ? 'checked' : '' }}>
                                 <label class="form-check-label" for="male">Male</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="gend" value="female">
+                                <input class="form-check-input" type="radio" name="gend" value="female" {{ $room->gend == 'female' ? 'checked' : '' }}>
                                 <label class="form-check-label" for="female">Female</label>
                             </div>
                                 </div>

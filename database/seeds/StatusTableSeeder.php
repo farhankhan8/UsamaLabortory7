@@ -10,22 +10,22 @@ class StatusTableSeeder extends Seeder
         $status = [
             [
                 'id'             => 1,
-                'status'           => 'Progressing',
+                'Sname'           => 'Progressing',
               
             ],
             [
                 'id'             => 2,
-                'status'           => 'Verified',
+                'Sname'           => 'Verified',
             
             ],
             [
                 'id'             => 3,
-                'status'           => 'Not Received',
+                'Sname'           => 'Not Received',
             
             ],
             [
                 'id'             => 4,
-                'status'           => 'Cancelled',
+                'Sname'           => 'Cancelled',
             
             ],
         ];

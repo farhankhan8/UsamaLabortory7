@@ -17,6 +17,8 @@ class CreateTestPerformedsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('available_test_id');
             $table->unsignedBigInteger('patient_id');
+            $table->unsignedBigInteger('Sname_id');
+
 
 
             $table->foreign('available_test_id')->references('id')->on('available_tests')
@@ -26,8 +28,12 @@ class CreateTestPerformedsTable extends Migration
             $table->foreign('patient_id')->references('id')->on('patients')
             ->onDelete('cascade')
             ->onUpdate('cascade');
+
+            $table->foreign('Sname_id')->references('id')->on('statuses')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+
             $table->datetime('start_time');
-            $table->string('state');
             $table->integer('testResult');
             $table->timestamps();
         });

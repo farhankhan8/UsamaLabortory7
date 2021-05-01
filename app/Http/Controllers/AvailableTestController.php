@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 use App\Event;
 use App\Http\Controllers\Controller;
@@ -11,7 +10,6 @@ use App\Catagory;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-
 class AvailableTestController extends Controller
 {
     public function index()

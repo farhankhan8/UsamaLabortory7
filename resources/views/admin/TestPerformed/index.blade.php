@@ -88,15 +88,15 @@
 
                             </td>
                             <td>
-                            @if ($testPerformed->state =='Progressing')
-                            <button class="btn btn-xs btn-info">{{ $testPerformed->state ?? '' }}</button>
-                               @elseif ($testPerformed->state =='Verified')
-                               <button class="btn btn-xs btn-primary">{{ $testPerformed->state ?? '' }}</button>
+                            @if ($testPerformed->Sname =='Progressing')
+                            <button class="btn btn-xs btn-info">{{ $testPerformed->Sname ?? '' }}</button>
+                               @elseif ($testPerformed->Sname =='Verified')
+                               <button class="btn btn-xs btn-primary">{{ $testPerformed->Sname ?? '' }}</button>
                           
-                               @elseif ($testPerformed->state =='Not Received')
-                               <button class="btn btn-xs  btn-warning">{{ $testPerformed->state ?? '' }}</button>
-                               @elseif ($testPerformed->state =='Cancelled')
-                               <button class="btn btn-xs btn-danger">{{ $testPerformed->state ?? '' }}</button>
+                               @elseif ($testPerformed->Sname =='Not Received')
+                               <button class="btn btn-xs  btn-warning">{{ $testPerformed->Sname ?? '' }}</button>
+                               @elseif ($testPerformed->Sname =='Cancelled')
+                               <button class="btn btn-xs btn-danger">{{ $testPerformed->Sname ?? '' }}</button>
                              @else
                              I don't have any records!
                                  @endif

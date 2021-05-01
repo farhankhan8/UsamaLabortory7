@@ -1,19 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Event;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroyAvailableTestRequest;
-use App\Http\Requests\StoreEventRequest;
-use App\Http\Requests\SoreAvailableTestRequest;
-use App\Http\Requests\UpdateAvailableTestRequest;
-use App\Room;
 use App\AvailableTest;
-use App\Tag;
-use App\Artical;
 use App\TestPerformed;
 use Session;
-
+use DB;
 use App\Catagory;
 
 use App\Services\EventService;
@@ -56,7 +48,7 @@ class ReceptionestController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' => 'required|max:120',
+            'Pname' => 'required|max:120',
             'email' => 'required|email|unique:users',
             'phone' => 'required|min:11|numeric',
             ]);
@@ -68,9 +60,8 @@ class ReceptionestController extends Controller
     }
     public function edit($id)
     {
-        $room = Patient::findOrFail($id);
-
         // abort_if(Gate::denies('room_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $room = Patient::findOrFail($id);
         return view('receptionest.patient.edit', compact('room'));
     }
     
@@ -91,9 +82,27 @@ class ReceptionestController extends Controller
 
     public function show($id)
     {
-        $rooms = Patient::findOrFail($id);
-        $a = $rooms->availableTest->pluck('name','testFee');
-        return view('receptionest.patient.show', compact('rooms','a'));
+        $test = DB::table('test_performeds')
+        ->where('test_performeds.patient_id', $id)
+        ->join('available_tests', 'test_performeds.available_test_id', '=', 'available_tests.id')
+        ->select('available_tests.name')
+        ->orderBy('patient_id', 'DESC')
+        ->get();
+         $tests = $test->pluck('name');    
+          $patient = Patient::findOrFail($id);
+        //  $a
+        //  $getTestPerformed = AvailableTest::all()->pluck('name');
+        //  $getTestFee = AvailableTest::all()->pluck('testFee');
+        //  $getTestUnits = AvailableTest::all()->pluck('units');
+        //   dd($getTestPerformed);
+        return view('receptionest.patient.show', compact('patient','tests'));
+
+
+
+
+        // $patients = Patient::findOrFail($id);
+        // $getNameAndFee = $patients->availableTest->pluck('name','testFee');
+        // return view('receptionest.patient.show', compact('patients','getNameAndFee'));
     }
 
     public function destroy($id)

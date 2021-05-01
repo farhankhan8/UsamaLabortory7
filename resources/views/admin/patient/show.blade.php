@@ -7,6 +7,7 @@
     <div class="card-body">            
             <div class="form-row">
     <div class="col-md-2 mb-3">
+
     <div class="form-group">
                <b> <label  for="user_id">Patient Name</label></b>
             <p>{{ $patient->Pname ?? '' }}</p>
@@ -38,6 +39,30 @@
     <b><label  for="available_test_id">Register Date</label></b>
    
 <p>  {{ $patient->start_time }}</p>
+</div>
+<div class="valid-feedback">
+Looks good!
+</div>
+</div>
+
+
+<div class="col-md-2 mb-3">
+<div class="form-group">
+    <b><label  for="available_test_id">Birthday</label></b>
+   
+<p>  {{ $patient->dob }}</p>
+</div>
+<div class="valid-feedback">
+Looks good!
+</div>
+</div>
+
+
+<div class="col-md-2 mb-3">
+<div class="form-group">
+    <b><label  for="available_test_id">Tests Performed</label></b>
+   
+<p>  {{ $tests }}</p>
 </div>
 <div class="valid-feedback">
 Looks good!

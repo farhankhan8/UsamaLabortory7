@@ -29,7 +29,7 @@
                         Patient Name
                         </th>
                         <th>
-                        Catagory
+                        Category
                         </th>
                         <th>
                         Phone
@@ -61,7 +61,7 @@
                                 {{ $event->id ?? '' }}
                             </td>
                             <td>
-                                {{ $event->name  ?? '' }}
+                                {{ $event->Pname  ?? '' }}
                             </td>
                             <td>
                             General

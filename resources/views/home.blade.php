@@ -30,7 +30,7 @@
                             <div class="rotate">
                             <i class="fa fa-user-md" style="font-size:36px;"></i>
                             </div>
-                            <h5 class="mb-5">Weekely Verified Tests</h5>
+                            <h5 class="mb-5">Weekly  Verified Tests</h5>
                             <h3 class="amount-position"> {{ $thisWeekPatient }}</h3>
 
 
@@ -68,16 +68,6 @@
                             <h5 class="mb-5">Critical Test Today</h5>
 
                             <h3>{{ count($criticalTestToday) }}</h3>
-                          
-
-                          
-
-                          
-
-                          
-                        
-
-
                         </div>
                     </div>
                 </a>
@@ -141,27 +131,27 @@ tr:nth-child(even) {
     <table class="table table-striped">
       <tr>
         <th>Test Name</th>
-        <th>Catagory</th>
+        <th>Category</th>
         <th>Patient Name</th>
         <th>Status</th>
 
       </tr>
-      @foreach($testPerformed as $key => $event)
+      @foreach($testPerformeds as $key => $testPerformed)
 
       <tr>
-        <td>{{ $event->availableTest->name ?? '' }}</td>
-        <td>{{ $event->availableTest->catagory->Cname ?? '' }}</td>
-        <td>{{ $event->patient->Pname  ?? '' }}</td>
+        <td>{{ $testPerformed->Cname ?? '' }}</td>
+        <td>{{ $testPerformed->name ?? '' }}</td>
+        <td>{{ $testPerformed->Pname  ?? '' }}</td>
         <td>
-                            @if ($event->state =='Progressing')
-                            <button class="btn btn-xs btn-info">{{ $event->state ?? '' }}</button>
-                               @elseif ($event->state =='Varified')
-                               <button class="btn btn-xs btn-primary">{{ $event->state ?? '' }}</button>
+                            @if ($testPerformed->Sname =='Progressing')
+                            <button class="btn btn-xs btn-info">{{ $testPerformed->Sname ?? '' }}</button>
+                               @elseif ($testPerformed->Sname =='Verified')
+                               <button class="btn btn-xs btn-primary">{{ $testPerformed->Sname ?? '' }}</button>
                           
-                               @elseif ($event->state =='Not Recived')
-                               <button class="btn btn-xs  btn-warning">{{ $event->state ?? '' }}</button>
-                               @elseif ($event->state =='Cancelled')
-                               <button class="btn btn-xs btn-danger">{{ $event->state ?? '' }}</button>
+                               @elseif ($testPerformed->Sname =='Not Received')
+                               <button class="btn btn-xs  btn-warning">{{ $testPerformed->Sname ?? '' }}</button>
+                               @elseif ($testPerformed->Sname =='Cancelled')
+                               <button class="btn btn-xs btn-danger">{{ $testPerformed->Sname ?? '' }}</button>
                              @else
                              I don't have any records!
                                  @endif
@@ -174,10 +164,10 @@ tr:nth-child(even) {
   <div class="column">
 
     <table class="table table-striped" >
-    <span style="text-align: center;"><h2>Catagory Wise Tests Today </h2></span>  
+    <span style="text-align: center;"><h2>Category Wise Tests Today </h2></span>  
 
       <tr>
-        <th>Catagory Name</th>
+        <th>Category Name</th>
         <th>No Of Tests</th>
       </tr>
       @foreach($distincrCatagory as $key => $event)
@@ -218,20 +208,7 @@ tr:nth-child(even) {
           <!-- <td>{{ $event->user->state  ?? '' }}</td> -->
 
 
-        <!-- <td>
-                            @if ($event->state =='Progressing')
-                            <button class="btn btn-xs btn-info">{{ $event->state ?? '' }}</button>
-                               @elseif ($event->state =='Varified')
-                               <button class="btn btn-xs btn-primary">{{ $event->state ?? '' }}</button>
-                          
-                               @elseif ($event->state =='Not Recived')
-                               <button class="btn btn-xs  btn-warning">{{ $event->state ?? '' }}</button>
-                               @elseif ($event->state =='Cancelled')
-                               <button class="btn btn-xs btn-danger">{{ $event->state ?? '' }}</button>
-                             @else
-                             I don't have any records!
-                                 @endif
-                            </td> -->
+
       </tr>
      @endforeach
     </table>
