@@ -26,9 +26,9 @@ class TestPerformed extends Model
          return $this->belongsTo(AvailableTest::class);
 
      }
-     public function status()
+     public function stat()
      {
-         return $this->belongsTo(Status::class);
+         return $this->belongsTo(Status::class,'Sname_id','id');
 
      }
 }

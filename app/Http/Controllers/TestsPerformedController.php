@@ -67,9 +67,12 @@ class TestsPerformedController extends Controller
     {
         abort_if(Gate::denies('event_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $testPerformedsId = TestPerformed::findOrFail($id);
+        $getSatusData =  $testPerformedsId->stat;
+        // dd($getSatusData);
+
          $getpatient = $testPerformedsId->patient;
          $getavailableTestName = $testPerformedsId->availableTest;
-        return view('admin.TestPerformed.show', compact('testPerformedsId','getpatient','getavailableTestName'));
+        return view('admin.TestPerformed.show', compact('testPerformedsId','getpatient','getavailableTestName','getSatusData'));
     }
     public function destroy($id)
     {

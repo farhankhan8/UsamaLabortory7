@@ -174,7 +174,7 @@ tr:nth-child(even) {
 
       <tr>
       <td>{{ $event->Cname }}</td>
-      <td>{{ $event->availableTest->count() }}</td>
+      <td>{{ $distincrCatagory2 }}</td>
       </tr>
       @endforeach
 
@@ -234,7 +234,7 @@ tr:nth-child(even) {
         <td>{{ $even->patient->Pname  ?? '' }}</td>
         <td>{{ $even->patient->start_time  ?? '' }}</td>
         <td>
-                            <button class="btn btn-xs btn-info">{{ $even->state ?? '' }}</button>
+                            <button class="btn btn-xs btn-info">Progressing</button>
         </td>
         <td>
         @can('event_edit')

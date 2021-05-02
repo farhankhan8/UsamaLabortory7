@@ -82,15 +82,15 @@
         <div class="form-group">
                 <b><label  for="">Status</label></b>
              <p>
-                @if ($testPerformedsId->state == 'Progressing')
-                            <button class="btn btn-xs btn-info">{{ $testPerformedsId->state ?? '' }}</button>
-                               @elseif ($testPerformedsId->state == 'Varified')
-                               <button class="btn btn-xs btn-primary">{{ $testPerformedsId->state ?? '' }}</button>
+                @if ($getSatusData->Sname  == 'Progressing')
+                            <button class="btn btn-xs btn-info">{{ $getSatusData->Sname  ?? '' }}</button>
+                               @elseif ($getSatusData->Sname  == 'Verified')
+                               <button class="btn btn-xs btn-primary">{{ $getSatusData->Sname  ?? '' }}</button>
                           
-                               @elseif ($testPerformedsId->state == 'Not Recived')
-                               <button class="btn btn-xs  btn-warning">{{ $testPerformedsId->state ?? '' }}</button>
-                               @elseif ($testPerformedsId->state =='Cancelled')
-                               <button class="btn btn-xs btn-danger">{{ $testPerformedsId->state ?? '' }}</button>
+                               @elseif ($getSatusData->Sname  == 'Not Received')
+                               <button class="btn btn-xs  btn-warning">{{ $getSatusData->Sname  ?? '' }}</button>
+                               @elseif ($getSatusData->Sname  =='Cancelled')
+                               <button class="btn btn-xs btn-danger">{{ $getSatusData->Sname  ?? '' }}</button>
                              @else
                              I don't have any records!
                                  @endif

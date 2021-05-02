@@ -15,9 +15,9 @@ class Status extends Model
       
     ];
 
-      public function testPerformed()
+      public function testPer()
       {
-          return $this->hasMany(TestPerformed::class);
+          return $this->hasMany(TestPerformed::class,'Sname_id','id');
       }
      
     //  public function availableTest()
