@@ -84,6 +84,20 @@ Route::get('patient-show/{id}','PatientController@show')->name('patient-show');
 Route::get('patient-edit/{id}', 'PatientController@edit')->name('patient-edit');
 Route::put('patient-update/{id}', 'PatientController@update')->name('patient-update');
 Route::DELETE('patient-delete/{id}','PatientController@destroy')->name('patient-delete');
+Route::get('patient-category', 'PatientController@patientCategory')->name('patient-category');
+Route::get('patient-category-create','PatientController@pccreate')->name('patient-category-create');
+Route::post('patient-category-store','PatientController@pcstore')->name('patient-category-store');
+Route::get('patient-category-show/{id}','PatientController@pcshow')->name('patient-category-show');
+Route::get('patient-category-edit/{id}', 'PatientController@pcedit')->name('patient-category-edit');
+Route::put('patient-category-update/{id}', 'PatientController@pcupdate')->name('patient-category-update');
+Route::DELETE('patient-category-delete/{id}','PatientController@pcdestroy')->name('patient-category-delete');
+
+
+
+
+
+
+
 
 
 // thses are the route for CatagoryController

@@ -1,48 +1,17 @@
 @extends('layouts.admin')
 @section('content')
-<div class="card">
-    <div class="card-header">
-    Patients Detail
-    </div>
-
-    <div class="card-body">
-        <div class="form-group">
-         <div class="row">
-            <div class="col">
-            <b> <label  for="user_id">Patient Name</label></b>
-            <p>{{ $patient->Pname ?? '' }}</p>
-            </div>
-              <div class="col">
-              <b> <label  for="user_id">Phone</label></b>
-               <p>{{ $patient->phone ?? '' }}</p>
-              </div>
-              <div class="col">
-            <b> <label  for="user_id">Email</label></b>
-            <p>{{ $patient->email ?? '' }}</p>
-            </div>
-              <div class="col">
-              <b> <label  for="user_id">Register Date</label></b>
-               <p>{{ $patient->start_time ?? '' }}</p>
-              </div>
-              <div class="col">
-            <b> <label  for="user_id">Birthday </label></b>
-            <p>{{ $patient->dob ?? '' }}</p>
-            </div>
-              <div class="col">
-              <b> <label  for="user_id">Tests Performed</label></b>
-               <p>{{ $tests ?? '' }}</p>
-              </div>
-          </div>
-            
-           
+@can('event_create')
+    <div style="margin-bottom: 10px;" class="row">
+        <div class="col-lg-12">
+            <a class="btn btn-success" href="{{ route("patient-category-create") }}">
+            Add new Patient Catagory
+            </a>
         </div>
     </div>
-</div>
-
+@endcan
 <div class="card">
     <div class="card-header">
-    Tests Performed By <span>{{ $patient->Pname ?? '' }}</span>
-
+    List of All Patients
     </div>
 
     <div class="card-body">
@@ -53,54 +22,59 @@
                         <th width="10">
 
                         </th>
-                      
                         <th>
-                        Test Name
+                            {{ trans('cruds.event.fields.id') }}
                         </th>
                         <th>
-                        Result
+                        Patient Category
                         </th>
                         <th>
-                        Range
+                        Discount
                         </th>
-                        <th>
-                         Date
-                        </th>
-                     
+                       
                         
                         <th>
-                          
+                            &nbsp;
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($allTests as $key => $test)
-                        <tr>
+                    @foreach($patientCategorys as $key => $patientCategory)
+                        <tr data-entry-id="{{ $patientCategory->id }}">
                             <td>
 
                             </td>
-                          
                             <td>
-                                {{ $test->name  ?? '' }}
+                                {{ $patientCategory->id ?? '' }}
                             </td>
                             <td>
-                            {{ $test->testResult ?? '' }}
+                                {{ $patientCategory->Pcategory  ?? '' }}
                             </td>
                             <td>
-                            {{ $test->initialNormalValue ?? '' }}-{{ $test->finalNormalValue ?? '' }}
+                                {{ $patientCategory->discount  ?? '' }}
                             </td>
+                           
                             <td>
-                            {{ $test->start_time ?? '' }}
+                                @can('event_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('patient-category-show', $patientCategory->id) }}">
+                                        {{ trans('global.view') }}
+                                    </a>
+                                @endcan
+
+                                @can('event_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('patient-category-edit', $patientCategory->id) }}">
+                                        {{ trans('global.edit') }}
+                                    </a>
+                                @endcan
+                                @can('event_delete')
+                                    <form  method="POST" action="{{ route("patient-category-delete", [$patientCategory->id]) }}" onsubmit="return confirm('{{ trans('Are You Sure to Deleted  ?') }}');"  style="display: inline-block;">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                    </form>
+                                @endcan 
 
                             </td>
-                            <td>
-                            <a class="btn btn-xs btn-info" href="#">
-                           <span class="glyphicon glyphicon-cog"></span>
-                           Generate Report
-                           </a>
-                            </td>
-                        
-                 
 
                         </tr>
                     @endforeach
@@ -109,6 +83,8 @@
         </div>
     </div>
 </div>
+
+
 
 @endsection
 @section('scripts')

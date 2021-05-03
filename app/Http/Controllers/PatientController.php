@@ -6,6 +6,7 @@ use App\TestPerformed;
 use Session;
 use App\Catagory;
 use App\Patient;
+use App\PatientCategory;
 use Gate;
 use DB;
 use Illuminate\Http\Request;
@@ -48,21 +49,24 @@ class PatientController extends Controller
     return redirect()->route('patient-list');
 }
     public function show($id)
-    {
-        $test = DB::table('test_performeds')
+    { 
+        $allTests = DB::table('test_performeds')
         ->where('test_performeds.patient_id', $id)
         ->join('available_tests', 'test_performeds.available_test_id', '=', 'available_tests.id')
-        ->select('available_tests.name')
+        ->select('available_tests.name','test_performeds.testResult','available_tests.initialNormalValue'
+        ,'available_tests.finalNormalValue','test_performeds.start_time')
         ->orderBy('patient_id', 'DESC')
-        ->get(); 
-         $tests = $test->pluck('name');    
+        ->get();
+        // dd($test);
+         $tests = $allTests->pluck('name');    
           $patient = Patient::findOrFail($id);
+        //   $patients  = Patient::all();
         //  $a
         //  $getTestPerformed = AvailableTest::all()->pluck('name');
         //  $getTestFee = AvailableTest::all()->pluck('testFee');
         //  $getTestUnits = AvailableTest::all()->pluck('units');
         //   dd($getTestPerformed);
-        return view('admin.patient.show', compact('patient','tests'));
+        return view('admin.patient.show', compact('patient','tests','allTests'));
     }
 
     public function destroy($id)
@@ -71,5 +75,51 @@ class PatientController extends Controller
         $task->delete();
         Session::flash('flash_message', 'Task successfully deleted!');
         return redirect()->route('patient-list');
+    }
+    public function patientCategory()
+    {
+        abort_if(Gate::denies('room_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $patientCategorys  = PatientCategory::all();
+        return view('admin.patient.pcindex', compact('patientCategorys'));
+    }
+    public function pccreate()
+    {
+        return view('admin.patient.pccreate');
+    }
+    public function pcstore(Request $request)
+    {
+        $this->validate($request,[
+            'Pcategory' => 'required|max:120',
+            'discount' => 'required',
+            ]);
+        $room = PatientCategory::create($request->all());
+        return redirect()->route('patient-category');
+    }
+    public function pcshow($id)
+    { 
+        $patientCategory = PatientCategory::findOrFail($id);
+        // dd($patientCategory);
+        return view('admin.patient.pcshow', compact('patientCategory'));
+    }
+    public function pcedit($id)
+    {
+        abort_if(Gate::denies('room_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $patientCategory = PatientCategory::findOrFail($id);
+        return view('admin.patient.pcedit', compact('patientCategory'));
+    }
+    public function pcupdate($id, Request $request)
+    {
+        $task = PatientCategory::findOrFail($id);
+        $input = $request->all(); 
+        $task->fill($input)->save();
+        Session::flash('flash_message', 'Task successfully added!');
+        return redirect()->route('patient-category');
+    }
+    public function pcdestroy($id)
+    {
+        $task = PatientCategory::findOrFail($id);
+        $task->delete();
+        Session::flash('flash_message', 'Task successfully deleted!');
+        return redirect()->route('patient-category');
     }
 }

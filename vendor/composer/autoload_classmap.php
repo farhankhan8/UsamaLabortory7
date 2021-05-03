@@ -7,7 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\AvailableTest' => $baseDir . '/app/AvailableTest.php',
-    'App\\AvailableTestPatient' => $baseDir . '/app/AvailableTestPatient.php',
     'App\\Catagory' => $baseDir . '/app/Catagory.php',
     'App\\Category' => $baseDir . '/app/Category.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
@@ -80,6 +79,7 @@ return array(
     'App\\Http\\Resources\\Admin\\RoomResource' => $baseDir . '/app/Http/Resources/Admin/RoomResource.php',
     'App\\Http\\Resources\\Admin\\UserResource' => $baseDir . '/app/Http/Resources/Admin/UserResource.php',
     'App\\Patient' => $baseDir . '/app/Patient.php',
+    'App\\PatientCategory' => $baseDir . '/app/PatientCategory.php',
     'App\\Permission' => $baseDir . '/app/Permission.php',
     'App\\Product' => $baseDir . '/app/Product.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
@@ -89,8 +89,10 @@ return array(
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\Role' => $baseDir . '/app/Role.php',
     'App\\Role1' => $baseDir . '/app/Role1.php',
+    'App\\Role1_Ahmed' => $baseDir . '/app/Role1_Ahmed.php',
     'App\\Room' => $baseDir . '/app/Room.php',
     'App\\Services\\EventService' => $baseDir . '/app/Services/EventService.php',
+    'App\\Status' => $baseDir . '/app/Status.php',
     'App\\Test' => $baseDir . '/app/Test.php',
     'App\\TestPerformed' => $baseDir . '/app/TestPerformed.php',
     'App\\Transaction' => $baseDir . '/app/Transaction.php',

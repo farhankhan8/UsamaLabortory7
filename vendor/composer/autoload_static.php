@@ -678,7 +678,6 @@ class ComposerStaticInit43c8a92ef41e9d703855db5dde1b8788
 
     public static $classMap = array (
         'App\\AvailableTest' => __DIR__ . '/../..' . '/app/AvailableTest.php',
-        'App\\AvailableTestPatient' => __DIR__ . '/../..' . '/app/AvailableTestPatient.php',
         'App\\Catagory' => __DIR__ . '/../..' . '/app/Catagory.php',
         'App\\Category' => __DIR__ . '/../..' . '/app/Category.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
@@ -751,6 +750,7 @@ class ComposerStaticInit43c8a92ef41e9d703855db5dde1b8788
         'App\\Http\\Resources\\Admin\\RoomResource' => __DIR__ . '/../..' . '/app/Http/Resources/Admin/RoomResource.php',
         'App\\Http\\Resources\\Admin\\UserResource' => __DIR__ . '/../..' . '/app/Http/Resources/Admin/UserResource.php',
         'App\\Patient' => __DIR__ . '/../..' . '/app/Patient.php',
+        'App\\PatientCategory' => __DIR__ . '/../..' . '/app/PatientCategory.php',
         'App\\Permission' => __DIR__ . '/../..' . '/app/Permission.php',
         'App\\Product' => __DIR__ . '/../..' . '/app/Product.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
@@ -760,8 +760,10 @@ class ComposerStaticInit43c8a92ef41e9d703855db5dde1b8788
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Role' => __DIR__ . '/../..' . '/app/Role.php',
         'App\\Role1' => __DIR__ . '/../..' . '/app/Role1.php',
+        'App\\Role1_Ahmed' => __DIR__ . '/../..' . '/app/Role1_Ahmed.php',
         'App\\Room' => __DIR__ . '/../..' . '/app/Room.php',
         'App\\Services\\EventService' => __DIR__ . '/../..' . '/app/Services/EventService.php',
+        'App\\Status' => __DIR__ . '/../..' . '/app/Status.php',
         'App\\Test' => __DIR__ . '/../..' . '/app/Test.php',
         'App\\TestPerformed' => __DIR__ . '/../..' . '/app/TestPerformed.php',
         'App\\Transaction' => __DIR__ . '/../..' . '/app/Transaction.php',

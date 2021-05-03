@@ -23,6 +23,24 @@
                     <ul class="nav-dropdown-items">
                         @can('permission_access')
                             <li class="nav-item">
+                                <a href="{{ route("catagory-list") }}" class="nav-link {{ request()->is('')  ? 'active' : '' }}">
+                                    <i class="fa-fw fas fa-unlock-alt nav-icon">
+
+                                    </i>
+                                    Tests Category
+                                </a>
+                            </li>
+                        @endcan
+                 
+                   
+                    </ul>
+
+
+
+
+                    <ul class="nav-dropdown-items">
+                        @can('permission_access')
+                            <li class="nav-item">
                                 <a href="{{ route("tests-performed") }}" class="nav-link {{ request()->is('')  ? 'active' : '' }}">
                                     <i class="fa-fw fas fa-unlock-alt nav-icon">
 
@@ -43,7 +61,7 @@
                         @endcan
                    
                     </ul>
-                </li>
+                 </li>
             @endcan
 
 
@@ -80,17 +98,34 @@
                                 </a>
                             </li>
                         @endcan
-                        <!-- @can('role_access')
+                          
+                        <!-- <ul class="nav-dropdown-items">
+                        @can('permission_access')
                             <li class="nav-item">
-                                <a href="{{ route("available-tests") }}" class="nav-link {{ request()->is('')  ? 'active' : '' }}">
-                                    <i class="fa-fw fas fa-briefcase nav-icon">
+                                <a href="{{ route("patient-category") }}" class="nav-link {{ request()->is('')  ? 'active' : '' }}">
+                                    <i class="fa-fw fas fa-unlock-alt nav-icon">
 
                                     </i>
-                                    Available Tests
+                                    Patients Category
                                 </a>
                             </li>
                         @endcan -->
-                   
+
+
+
+
+
+                     @can('role_access')
+                            <li class="nav-item">
+                                <a href="{{ route("patient-category") }}" class="nav-link {{ request()->is('')  ? 'active' : '' }}">
+                                    <i class="fa-fw fas fa-briefcase nav-icon">
+
+                                    </i>
+                                    Patients Category
+                                </a>
+                            </li>
+                        @endcan 
+                
                     </ul>
                 </li>
             @endcan
@@ -103,7 +138,7 @@
 
 
 
-
+<!-- 
             @can('user_management_access')
                 <li class="nav-item nav-dropdown">
                     <a class="nav-link  nav-dropdown-toggle" href="#">
@@ -123,20 +158,11 @@
                                 </a>
                             </li>
                         @endcan
-                        <!-- @can('role_access')
-                            <li class="nav-item">
-                                <a href="{{ route("available-tests") }}" class="nav-link {{ request()->is('')  ? 'active' : '' }}">
-                                    <i class="fa-fw fas fa-briefcase nav-icon">
-
-                                    </i>
-                                    Available Tests
-                                </a>
-                            </li>
-                        @endcan -->
+                 
                    
                     </ul>
                 </li>
-            @endcan
+            @endcan -->
 
 
 

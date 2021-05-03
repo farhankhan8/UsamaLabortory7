@@ -60,10 +60,17 @@ class HomeController
 
 
 
+        // $testInCatagory = DB::table('test_performeds')
+        // ->join('available_tests', 'test_performeds.available_test_id', '=', 'available_tests.id')
+        // ->join('catagories', '.available_tests.catagory_id', '=', 'catagories.id')
+        // // ->select('catagories.Cname','available_tests.name','test_performeds.id')
+        // ->groupBy('catagories.Cname')
+        // ->get();
+        //  dd($testInCatagory);
+
 
         $distincrCatagory = Catagory::distinct()->get();
         $test = DB::table('test_performeds')
-       
         ->get('id'); 
          $distincrCatagory2 = $test->count();    
     
